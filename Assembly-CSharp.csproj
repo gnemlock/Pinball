@@ -47,8 +47,14 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Boost.cs" />
+     <Compile Include="Assets\PinballObject.cs" />
      <Compile Include="Assets\Player.cs" />
+     <Compile Include="Assets\Scripts\Flipper.cs" />
      <Compile Include="Assets\Scripts\Flippers.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Object Pooling\GameObjectPool.cs" />
+     <Compile Include="Assets\Scripts\Object Pooling\PoolableGameObject.cs" />
+     <Compile Include="Assets\Scripts\PlayerGeneric.cs" />
      <Compile Include="Assets\Scripts\PointsCollider.cs" />
      <Compile Include="Assets\Test.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />

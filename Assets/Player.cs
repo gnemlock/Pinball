@@ -10,14 +10,52 @@ public class Player : MonoBehaviour
 		 public float impulseNegation;
 		 public Rigidbody rigidbody;
 		 private float defaultMass;
-
+		 public Transform focus;
+		 //public float[] allowXFlags;
 		 public float massTimer;
 		 public float temporaryMass;
+
+		 private Player instance;
+
+		 private void Awake()
+		 {
+					if (instance == null)
+					{
+							 instance = this;
+					} else if (instance != this)
+					{
+							 Destroy (this);
+					}
+		 }
 
 		 private void Start()
 		 {
 					rigidbody = GetComponent<Rigidbody> ();
 					defaultMass = rigidbody.mass;
+
+					SetFocus ();
+		 }
+
+		 private void Update()
+		 {
+					if (Input.GetKeyDown (KeyCode.L))
+					{
+							 Debug.Log ("velocity:" + rigidbody.velocity + " drag:" + rigidbody.drag + " " + rigidbody.mass + " at gravity " + Physics.gravity);
+					}
+
+					SetFocus ();
+		 }
+
+		 void SetFocus()
+		 {
+					if (focus)
+					{
+							 focus.position = new Vector3 (transform.position.x, transform.position.y, 1.0f);
+					} 
+					else
+					{
+							 Debug.Log ("No Focus");
+					}
 		 }
 
 		 private void OnCollisionEnter(Collision collision)
@@ -46,3 +84,7 @@ public class Player : MonoBehaviour
 					rigidbody.mass = defaultMass;
 		 }
 }
+
+//TODO: Fix camera to follow player up and down; figure out medium for multiple balls
+//TODO: Setup delegates for generic collision functions
+//TODO: Setup failsafe if ball gets stuck
