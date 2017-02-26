@@ -10,3 +10,6 @@ public class PlayerGeneric : PoolableGameObject
         rigidbody = GetComponent<Rigidbody>();
     }
 }
+
+//TODO:Use custom inspector to only draw properties relevant to selected function in PinballObject
+//TODO:Add collision fields to apply sound filters to main music; test out

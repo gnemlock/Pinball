@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 #if UNITY_EDITOR
 using Utility = GameManagerUtility;
 using UnityEditor;
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
     public PlayerGeneric playerPrefab;
     public int playerMaximum = 10;
     public Text scoreTextBox;
+    public Vector3 playerSpawnPosition;
+    public GameObject player;
 
     public int score { get; private set;}
 
@@ -23,13 +26,13 @@ public class GameManager : MonoBehaviour
 
     public delegate void FlipperAction();
     /// <summary>The trigger left flippers.</summary>
-    public FlipperAction TriggerLeftFlipper;
+    public static FlipperAction TriggerLeftFlipper;
     /// <summary>The trigger right flippers.</summary>
-    public FlipperAction TriggerRightFlipper;
+    public static FlipperAction TriggerRightFlipper;
     /// <summary>The release left flippers.</summary>
-    public FlipperAction ReleaseLeftFlipper;
+    public static FlipperAction ReleaseLeftFlipper;
     /// <summary>The release right flippers.</summary>
-    public FlipperAction ReleaseRightFlipper;
+    public static FlipperAction ReleaseRightFlipper;
 
     //TODO:General object pooling
     //TODO:Player object pooling
@@ -54,13 +57,29 @@ public class GameManager : MonoBehaviour
         #region Setup Player Pool
         playerInstances = new List<PlayerGeneric>();
         playerPool = new GameObjectPool(playerPrefab);
-        #endregion
+                          #endregion
     }
 
     public void AddScore(int score)
     {
         this.score += score;
         scoreTextBox.text = "Score: " + score;
+    }
+
+    public void RightTrigger()
+    {
+        TriggerRightFlipper();
+        Invoke("RightRelease", 3.0f);
+    }
+
+    public void Reset()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void RightRelease()
+    {
+        ReleaseRightFlipper();
     }
 
     public void SpawnPlayer(Vector3 position, Quaternion rotation, int count = 1, 
@@ -85,12 +104,12 @@ public class GameManager : MonoBehaviour
 
     public void SpawnPlayer(Quaternion rotation, int count = 1, bool ignoreMaximum = false)
     {
-        SpawnPlayer(Vector3.zero, rotation, count, ignoreMaximum);
+        SpawnPlayer(playerSpawnPosition, rotation, count, ignoreMaximum);
     }
 
     public void SpawnPlayer()
     {
-        SpawnPlayer(Vector3.zero, Quaternion.identity);
+        SpawnPlayer(playerSpawnPosition, Quaternion.identity);
     }
 }
 
@@ -105,6 +124,7 @@ public class GameManagerUtility
     }
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(GameManager))]
 public class GameManagerEditor : Editor
 {
@@ -120,3 +140,4 @@ public class GameManagerEditor : Editor
         }
     }
 }
+#endif

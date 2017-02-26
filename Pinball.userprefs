@@ -3,11 +3,12 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameManager.cs">
     <Files>
       <File FileName="Assets\Player.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameManager.cs" Line="14" Column="131" />
-      <File FileName="Assets\Scripts\Object Pooling\GameObjectPool.cs" Line="38" Column="96" />
-      <File FileName="Assets\Scripts\Object Pooling\PoolableGameObject.cs" Line="27" Column="10" />
-      <File FileName="Assets\Scripts\PlayerGeneric.cs" Line="13" Column="1" />
-      <File FileName="Assets\Scripts\Flipper.cs" Line="5" Column="2" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="77" Column="74" />
+      <File FileName="Assets\Scripts\Flipper.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\HoldButton.cs" Line="1" Column="1" />
+      <File FileName="Assets\RightTriggerEvent.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Flippers.cs" Line="36" Column="11" />
+      <File FileName="Assets\Scripts\PlayerGeneric.cs" Line="15" Column="75" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
