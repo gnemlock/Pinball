@@ -27,14 +27,14 @@ public class Flippers : MonoBehaviour
 
     void Start()
     {
-        position = ball.transform.position;
+        //position = ball.transform.position;
         soundEffect = GetComponent<AudioSource>();
     }
     
     void Update()
     {
         //text.text = "Score: " + score;
-        
+        #if UNITY_EDITOR
         if(Input.GetKeyDown(leftFlipperButton))
         {
             JointSpring hingeSpring = leftFlipper.spring;
@@ -92,5 +92,6 @@ public class Flippers : MonoBehaviour
         {
             Instantiate(explosion, explosionSpawn);
         }
+        #endif
     } 
 }

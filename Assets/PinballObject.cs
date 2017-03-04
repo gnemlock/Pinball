@@ -6,7 +6,7 @@ using UnityEngine;
 public class PinballObject : MonoBehaviour
 {
     public float speed;
-    public float score;
+    public int score = 1860;
     public float spawnNumber;
     public float timer;
     public GameObject prefab;
@@ -15,6 +15,7 @@ public class PinballObject : MonoBehaviour
     public Vector3 velocity;
     public Vector3 gravity;
     public float drag;
+    public bool hold;
 
     public AudioSource soundEffect;
     
@@ -39,6 +40,14 @@ public class PinballObject : MonoBehaviour
     {
     		CheckCollision (collision.gameObject);
     }
+
+    protected void OnCollisionStay(Collision collision)
+    {
+        if(hold)
+        {
+            CheckCollision(collision.gameObject);
+        }
+    }
     
     protected void OnTriggerEnter(Collider other)
     {
@@ -50,6 +59,7 @@ public class PinballObject : MonoBehaviour
     {
         if (other.CompareTag("Player"));
         {
+            //GameManager.instance.AddScore(score);
             if(soundEffect)
             {
                 soundEffect.Play();

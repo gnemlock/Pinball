@@ -7,37 +7,41 @@ public class Flipper : MonoBehaviour
     public HingeJoint hinge;
     public float springSpeed;
     public float springDamper;
+    static int id = 1;
+    public GameManager gameManager;
 
     public void Awake()
     {
+        Debug.Log("Flipper " + id++);
         hinge = GetComponent<HingeJoint>();
         hinge.useSpring = true;
+    } 
 
+    public void Start()
+    {
         if(direction == Direction.left)
         {
-            GameManager.TriggerLeftFlipper += this.Flip;
-            GameManager.ReleaseLeftFlipper += this.Release;
+            gameManager.AddLeftFlipper(this);
         }
         else
         {
-            GameManager.TriggerRightFlipper += this.Flip;
-            GameManager.ReleaseRightFlipper += this.Release;
-        }                                            
-    }                                                
-                                                     
-    public void OnDestroy()                          
-    {                                                
-        if(direction == Direction.left)              
-        {                                            
-            GameManager.TriggerLeftFlipper -= this.Flip;
-            GameManager.ReleaseLeftFlipper -= this.Release;
-        }                                         
-        else                                      
-        {                                         
-            GameManager.TriggerRightFlipper -= this.Flip;
-            GameManager.ReleaseRightFlipper -= this.Release;
+            gameManager.AddRightFlipper(this);
+        } 
+    }
+    #if UNITY_EDITOR
+    private void Update()
+    {
+        KeyCode key = (direction == Direction.left) ? KeyCode.LeftArrow : KeyCode.RightArrow;
+        if(Input.GetKeyDown(key))
+        {
+            Flip();
+        }
+        else if(Input.GetKeyUp(key))
+        {
+            Release();
         }
     }
+    #endif
 
     public void Flip()
     {
