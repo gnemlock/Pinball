@@ -50,19 +50,18 @@
      <Compile Include="Assets\GameOver.cs" />
      <Compile Include="Assets\PinballObject.cs" />
      <Compile Include="Assets\Player.cs" />
-     <Compile Include="Assets\ResetGame.cs" />
+     <Compile Include="Assets\PlayerGeneric.cs" />
      <Compile Include="Assets\RightTriggerEvent.cs" />
      <Compile Include="Assets\Scripts\Flipper.cs" />
      <Compile Include="Assets\Scripts\Flippers.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\HoldButton.cs" />
+     <Compile Include="Assets\Scripts\NewBehaviourScript.cs" />
      <Compile Include="Assets\Scripts\Object Pooling\GameObjectPool.cs" />
      <Compile Include="Assets\Scripts\Object Pooling\PoolableGameObject.cs" />
-     <Compile Include="Assets\Scripts\PlayerGeneric.cs" />
      <Compile Include="Assets\Scripts\PointsCollider.cs" />
      <Compile Include="Assets\SlowMo.cs" />
      <Compile Include="Assets\Test.cs" />
-     <Compile Include="Assets\Tetsg.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
@@ -161,6 +160,9 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset2.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -175,6 +177,9 @@
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Purchasing">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityPurchasing/UnityEngine.Purchasing.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.VR">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>

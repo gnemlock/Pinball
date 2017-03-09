@@ -67,35 +67,39 @@ public class PinballObject : MonoBehaviour
 
             Rigidbody rigidbody = other.GetComponent<Rigidbody> ();
             
-            if (modifier == Modifier.spawnPlayer)
+            if(modifier == Modifier.spawnPlayer)
             {
-                if (timer >= delay && prefab != null)
+                if(timer >= delay && prefab != null)
                 {
-                    GameObject otherBall = (GameObject)Instantiate<GameObject> (prefab);
+                    GameObject otherBall = (GameObject)Instantiate<GameObject>(prefab);
                     otherBall.transform.position = spawnPosition.position;
                     otherBall.transform.rotation = spawnPosition.rotation;
                     timer = 0f;
                 }
-            } 
-            else if (modifier == Modifier.addPoints)
+            }
+            else if(modifier == Modifier.addPoints)
             {
                 Flippers.score += (int)(score * rigidbody.velocity.magnitude);
             }
-            else if (modifier == Modifier.bounce)
+            else if(modifier == Modifier.bounce)
             {
-                Debug.Log ("bounce!");
-            } 
-            else if (modifier == Modifier.addVelocity)
+                Debug.Log("bounce!");
+            }
+            else if(modifier == Modifier.addVelocity)
             {
                 rigidbody.velocity += velocity * speed;
             }
-            else if (modifier == Modifier.addDrag)
+            else if(modifier == Modifier.addDrag)
             {
                 rigidbody.drag += drag * speed;
             }
-            else if (modifier == Modifier.changeGravity)
+            else if(modifier == Modifier.changeGravity)
             {
                 Physics.gravity = gravity;
+            }
+            else if(modifier == Modifier.endGame)
+            {
+                GameManager.instance.GameOver();
             }
         }
     }
@@ -109,7 +113,8 @@ public class PinballObject : MonoBehaviour
         addVelocity,
         addDrag,
         changeGravity,
-        doNothing
+        doNothing,
+        endGame
     }
     
     //TODO:Work on horizontal area

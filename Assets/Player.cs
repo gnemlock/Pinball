@@ -81,8 +81,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            score += 1934;
-            scoreText.text = score.ToString();
+            GameManager.instance.AddScore(1934);
         }
     }
 

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResetGame : MonoBehaviour {
+public class NewBehaviourScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Debug.Log("ping");
+		
 	}
 	
 	// Update is called once per frame

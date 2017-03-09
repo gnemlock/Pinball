@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tetsg : MonoBehaviour {
+public class PlayerGeneric : PoolableGameObject {
 
 	// Use this for initialization
 	void Start () {

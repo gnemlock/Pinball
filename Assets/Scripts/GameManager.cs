@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public Vector3 playerSpawnPosition;
     public GameObject player;
     public string playerName;
-    [Tooltip("GameObject holding high score Texts")] public GameObject highScores;
+    [Tooltip("GameObject holding high score Texts")] public GameObject highScoresParent;
 
     public int score;// { get; private set;}
 
@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     public Text[] highScoreNameTexts;
     [Tooltip("The last label is the first player")]
     public Text[] highScoreTexts;
+    public Vector3 spawnPosition;
 
     private static string highScoreName = "Name";
     private static string[] highScoreKeys = {
@@ -58,11 +59,17 @@ public class GameManager : MonoBehaviour
     };
     //TODO:Setup player prefs, high scores
 
-    public void Play()
+    public void Play(bool playing = true)
     {
-        playing = true;
-        player.SetActive(true);
-        highScores.SetActive(false);
+        playing = playing;
+        player.SetActive(playing);
+        Debug.Log(!playing);
+        highScoresParent.SetActive(!playing);
+
+        if(playing)
+        {
+            player.transform.position = spawnPosition;
+        }
     }
     static private void CreateDefaultHighScores()
     {
@@ -134,12 +141,15 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        Debug.Log("GameOver");
         ScoreName[] highScores = GetHighScores();
         int place = 0;
         for(int i = 0; i < 5; i++)
         {
+            Debug.Log("Processing " + highScores[i].name + " : " + highScores[i].score);
             if(score > highScores[i].score)
             {
+                Debug.Log("Place");
                 place++;
             }
             else
@@ -154,6 +164,7 @@ public class GameManager : MonoBehaviour
         }
 
         DisplayHighScores(highScores);
+        Play(false);
     }
 
     private void DisplayHighScores(ScoreName[] highScores)
@@ -177,7 +188,7 @@ public class GameManager : MonoBehaviour
     {
         string playerName = GetPlayerName();
         // For all scores leading up to the new place
-        for(int i = 0; i < place; i++)
+        for(int i = 0; i < place - 1; i++)
         {
             highScores[i] = highScores[i + 1];
         }
@@ -186,7 +197,7 @@ public class GameManager : MonoBehaviour
 
         SetHighScores(highScores);
     }
-
+    //TODO:Recover lost materials
     //TODO:General object pooling
     //TODO:Player object pooling
     //TODO:Points
@@ -216,6 +227,12 @@ public class GameManager : MonoBehaviour
         #region Display High Scores
         DisplayHighScores(GetHighScores());
         #endregion
+        #if UNITY_EDITOR
+        /*for(int i = 0; i < 5; i++)
+        {
+            Debug.Log(PlayerPrefs.GetString(highScoreKeys[i] + highScoreName) + " : " + PlayerPrefs.GetInt(highScoreKeys[i]).ToString());
+        }*/
+        #endif
     }
 
     public void AddLeftFlipper(Flipper flipper)
@@ -228,9 +245,9 @@ public class GameManager : MonoBehaviour
         rightFlippers.Add(flipper);
     }
 
-    public void AddScore(int score)
+    public void AddScore(int newScore)
     {
-        this.score += score;
+        score += newScore;
         scoreTextBox.text = "Score: " + score;
     }
 

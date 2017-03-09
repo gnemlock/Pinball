@@ -1,12 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\ResetGame.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Utility\SmoothFollow.cs">
     <Files>
-      <File FileName="Assets\PinballObject.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\PinballObject.cs" Line="102" Column="49" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="187" Column="62" />
       <File FileName="Assets\SlowMo.cs" Line="1" Column="1" />
-      <File FileName="Assets\GameOver.cs" Line="20" Column="6" />
-      <File FileName="Assets\ResetGame.cs" Line="9" Column="27" />
+      <File FileName="Assets\PlayerGeneric.cs" Line="5" Column="48" />
+      <File FileName="Assets\Scripts\Flipper.cs" Line="15" Column="12" />
+      <File FileName="Assets\Player.cs" Line="83" Column="10" />
+      <File FileName="Assets\Standard Assets\Utility\SmoothFollow.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

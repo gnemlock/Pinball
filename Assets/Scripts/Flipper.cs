@@ -12,7 +12,7 @@ public class Flipper : MonoBehaviour
 
     public void Awake()
     {
-        Debug.Log("Flipper " + id++);
+        // Debug.Log("Flipper " + id++);
         hinge = GetComponent<HingeJoint>();
         hinge.useSpring = true;
     } 
